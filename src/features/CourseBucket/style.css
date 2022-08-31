@@ -1,0 +1,32 @@
+.CourseBucket {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: var(--container-color);
+
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
+
+    width: 30ch;
+
+    margin: 1em;
+    padding: 1em;
+
+    border-radius: 10px;
+}
+
+.CourseBucket--canDrop {
+
+}
+
+.CourseBucket--isOver {
+    outline: var(--container-color) dashed 4px;
+    outline-offset: 4px;
+}
+
+.CourseBucket__Courses {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: calc(2 * var(--CourseItem-min-inner-width) + 4 * (var(--CourseItem-horizontal-margin) + var(--CourseItem-horizontal-padding)));
+}

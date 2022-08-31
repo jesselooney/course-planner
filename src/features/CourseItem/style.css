@@ -1,0 +1,34 @@
+.CourseItem {
+    --min-inner-width: var(--CourseItem-min-inner-width);
+    --horizontal-margin: var(--CourseItem-horizontal-margin);
+    --horizontal-padding: var(--CourseItem-horizontal-padding);
+
+    text-align: center;
+
+    margin: .5em var(--horizontal-margin);
+    padding: .5em var(--horizontal-padding);
+
+    border-radius: 10px;
+
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
+
+    background-color: var(--action-color);
+    width: min-content;
+
+    cursor: pointer;
+}
+
+.CourseItem__inner {
+    display: inline-block;
+    width: calc(2 * (var(--min-inner-width) + var(--horizontal-margin) + var(--horizontal-padding)));
+    overflow: clip;
+    white-space: nowrap;
+}
+
+.CourseItem--halfYear .CourseItem__inner {
+    width: var(--min-inner-width);
+}
+
+.CourseItem--isDragging {
+    opacity: .5;
+}
