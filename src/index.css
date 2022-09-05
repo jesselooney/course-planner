@@ -6,6 +6,10 @@
     box-sizing: border-box;
 }
 
+*:focus {
+    outline: 3px dashed var(--background-color);
+}
+
 :root {
     --background-color: #7778A6;
     --container-color: #FFFFFF;
