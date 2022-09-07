@@ -1,0 +1,41 @@
+.TabMenu {
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em;
+}
+
+.TabMenu__Tabs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    margin: .5em;
+
+    background-color: #ddd;
+    border-radius: 10px;
+
+    list-style: none;
+
+    box-shadow: inset 0 0 5px 2px rgba(0, 0, 0, 0.2);
+}
+
+.TabMenu__Tabs__Tab {
+    padding: .5em;
+    margin: .5em;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.TabMenu__Tabs__Tab:hover {
+    background-color: #eee;
+}
+
+.TabMenu__Tabs__Tab.react-tabs__tab--selected {
+    background-color: #fff;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
+}
+

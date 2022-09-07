@@ -27,7 +27,7 @@ function CourseSearch() {
   const [searchString, setSearchString] = useState('')
 
   const courseItems = data.courses
-    .filter((c) => c.name.includes(searchString))
+    .filter((c) => c.name.toLowerCase().includes(searchString.toLowerCase()))
     .map((course, index) => <CourseItem course={course} />)
 
   return (

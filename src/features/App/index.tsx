@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 
 import GlobalData from '../../types/GlobalData'
 import CourseBucket from '../CourseBucket'
-import CourseSearch from '../CourseSearch'
+import TabMenu from '../TabMenu'
 import initialData from '../../initialData'
 
 import './style.css'
@@ -20,7 +21,7 @@ function App() {
     <div className="App">
       <DataContext.Provider value={[data, setData]}>
         <DndProvider backend={HTML5Backend}>
-          <CourseSearch />
+          <TabMenu />
           <div className="App__CourseBuckets">
             <CourseBucket title="9th Grade" grade={9} />
             <CourseBucket title="10th Grade" grade={10} />
