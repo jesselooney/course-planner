@@ -26,7 +26,7 @@ function CourseBucket({ title, grade }: { title: string; grade: Grade }) {
         hasOwnProperty(item, 'courseId')
       ) {
         if (typeof item.id === 'number') updateCourseSelection([data, setData], item.id, { grade })
-        if (typeof item.id === 'undefined' && typeof item.courseId === 'number')
+        if (typeof item.id === 'undefined' && typeof item.courseId === 'string')
           createCourseSelection([data, setData], { courseId: item.courseId, grade })
       }
     },
