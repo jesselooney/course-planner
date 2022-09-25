@@ -1,3 +1,4 @@
+import Alert from './types/Alert'
 import CourseSelection from './types/CourseSelection'
 import GlobalData from './types/GlobalData'
 import StateTuple from './types/StateTuple'
@@ -33,7 +34,10 @@ export function updateCourseSelection(
   }
 }
 
-export function removeCourseSelection([data, setData]: StateTuple<GlobalData>, selectionId: number): void {
+export function removeCourseSelection(
+  [data, setData]: StateTuple<GlobalData>,
+  selectionId: number,
+): void {
   const index = data.courseSelections.findIndex((s) => s.id === selectionId)
   if (index >= 0) {
     data.courseSelections.splice(index, 1)
@@ -41,7 +45,21 @@ export function removeCourseSelection([data, setData]: StateTuple<GlobalData>, s
   }
 }
 
+export function toggleIgnored(alerts: Alert[], id: number): Alert[] {
+  const index = alerts.findIndex((a) => a.id === id)
+  if (index >= 0) {
+    const alert = alerts[index]
+    const newAlert = { ...alert, ignored: !alert.ignored }
+    alerts[index] = newAlert
+  }
+
+  return alerts
+}
+
 // https://fettblog.eu/typescript-hasownproperty/
-export function hasOwnProperty<X extends {}, Y extends PropertyKey>(obj: X, prop: Y): obj is X & Record<Y, unknown> {
+export function hasOwnProperty<X extends {}, Y extends PropertyKey>(
+  obj: X,
+  prop: Y,
+): obj is X & Record<Y, unknown> {
   return obj.hasOwnProperty(prop)
 }

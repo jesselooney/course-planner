@@ -14,6 +14,7 @@ export const initialData: GlobalData = {
     { id: '2', name: 'Psychology', level: 'Honors', credits: 0.5, expectedGrade: 11, prerequisites: [] },
   ],
   courseSelections: [],
+  graduationRequirementErrors: [{id: 0, message: 'XYZ: three credits of astrophysics', ignored: false}, {id: 1, message: 'ABC: twenty credits of high-energy dentistry', ignored: false}],
 }
 
 export default initialData

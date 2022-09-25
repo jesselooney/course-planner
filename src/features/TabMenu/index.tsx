@@ -1,9 +1,20 @@
+import { useContext } from 'react'
 import { Tabs, TabList, Tab, TabPanel } from 'react-tabs'
+import AlertList from '../../components/AlertList'
+import { toggleIgnored } from '../../utils'
+import { DataContext } from '../App'
 import CourseSearch from '../CourseSearch'
 
 import './style.css'
 
 function TabMenu() {
+  const [data, setData] = useContext(DataContext)
+
+  const toggleIgnoredGradReqs = (id: number) => {
+    data.graduationRequirementErrors = toggleIgnored(data.graduationRequirementErrors, id)
+    setData(data)
+  }
+
   return (
     <Tabs className="TabMenu">
       <TabList className="TabMenu__Tabs">
@@ -16,7 +27,12 @@ function TabMenu() {
         <CourseSearch />
       </TabPanel>
       <TabPanel>Course reqs</TabPanel>
-      <TabPanel>Grad reqs</TabPanel>
+      <TabPanel>
+        <AlertList
+          alerts={data.graduationRequirementErrors}
+          toggleIgnored={toggleIgnoredGradReqs}
+        />
+      </TabPanel>
     </Tabs>
   )
 }

@@ -1,0 +1,13 @@
+.AlertList {
+    list-style: none;
+}
+
+.AlertList__AlertItem {
+    color: red;
+}
+
+.AlertList__AlertItem--ignored {
+    text-decoration: line-through;
+    color: darkgray;
+    font-style: italic;
+}
