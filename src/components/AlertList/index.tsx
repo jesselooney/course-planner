@@ -12,7 +12,7 @@ export function AlertList({
   return <ul className="AlertList">{alerts.map((a) => AlertItem(a, toggleIgnored))}</ul>
 }
 
-function AlertItem({ id, message, ignored }: Alert, toggleIgnored: (id: number) => void) {
+export function AlertItem({ id, message, ignored }: Alert, toggleIgnored: (id: number) => void) {
   return (
     <li
       className={objstr({ AlertList__AlertItem: true, 'AlertList__AlertItem--ignored': ignored })}

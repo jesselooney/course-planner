@@ -24,6 +24,9 @@
 }
 
 .TabMenu__Tabs__Tab {
+    display: inline-flex;
+    align-items: center;
+    height: 2em;
     padding: .5em;
     margin: .5em;
     border-radius: 10px;
@@ -39,3 +42,19 @@
     box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
 }
 
+.TabMenu__Tabs__Tab__Badge {
+    font-size: .8em;
+    margin-left: .2em;
+    text-align: center;
+    line-height: 1.8em;
+    display: inline-block;
+    width: 1.8em;
+    height: 1.8em;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+}
+
+.TabMenu__Tabs__Tab__Badge--hidden {
+    display: none;
+}

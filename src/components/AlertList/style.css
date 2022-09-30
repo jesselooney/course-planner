@@ -3,11 +3,28 @@
 }
 
 .AlertList__AlertItem {
+    padding: .2em;
+    border-radius: 4px;
     color: red;
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.AlertList__AlertItem:hover {
+    background-color: rgba(255, 0, 0, .1);
 }
 
 .AlertList__AlertItem--ignored {
     text-decoration: line-through;
     color: darkgray;
     font-style: italic;
+}
+
+.AlertList__AlertItem--ignored:hover {
+    background-color: rgba(0, 0, 0, .1);
 }
