@@ -5,6 +5,7 @@ import CourseSelection from './CourseSelection'
 export type GlobalData = {
   courses: Course[]
   courseSelections: CourseSelection[]
+  courseRequirementErrors: Alert[]
   graduationRequirementErrors: Alert[]
 }
 

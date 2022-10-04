@@ -19,7 +19,19 @@ function TabMenu() {
     setData(newData)
   }
 
+  function toggleIgnoredCourseReqs(id: number) {
+    const newData = {
+      ...data,
+      courseRequirementErrors: toggleIgnored(data.courseRequirementErrors, id),
+    }
+    setData(newData)
+  }
+
   const gradReqErrorCount = data.graduationRequirementErrors.filter(
+    (e) => e.ignored === false,
+  ).length
+
+  const courseReqErrorCount = data.courseRequirementErrors.filter(
     (e) => e.ignored === false,
   ).length
 
@@ -27,9 +39,19 @@ function TabMenu() {
     <Tabs className="TabMenu">
       <TabList className="TabMenu__Tabs">
         <Tab className="TabMenu__Tabs__Tab">Courses</Tab>
-        <Tab className="TabMenu__Tabs__Tab">Course Requirements</Tab>
         <Tab className="TabMenu__Tabs__Tab">
-          Graduation Requirements{' '}
+          Course Requirements
+          <span
+            className={objstr({
+              TabMenu__Tabs__Tab__Badge: true,
+              'TabMenu__Tabs__Tab__Badge--hidden': courseReqErrorCount === 0,
+            })}
+          >
+            {courseReqErrorCount}
+          </span>
+        </Tab>
+        <Tab className="TabMenu__Tabs__Tab">
+          Graduation Requirements
           <span
             className={objstr({
               TabMenu__Tabs__Tab__Badge: true,
@@ -44,7 +66,12 @@ function TabMenu() {
       <TabPanel>
         <CourseSearch />
       </TabPanel>
-      <TabPanel>Course reqs</TabPanel>
+      <TabPanel>
+        <AlertList
+          alerts={data.courseRequirementErrors}
+          toggleIgnored={toggleIgnoredCourseReqs}
+        />
+      </TabPanel>
       <TabPanel>
         <AlertList
           alerts={data.graduationRequirementErrors}
