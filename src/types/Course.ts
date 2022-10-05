@@ -1,6 +1,7 @@
-import Grade from "./Grade"
-import CourseID from "./CourseID"
-import CourseLevel from "./CourseLevel"
+import Grade from './Grade'
+import CourseID from './CourseID'
+import CourseLevel from './CourseLevel'
+import Requirements from './Requirements'
 
 export type Course = {
   id: CourseID
@@ -8,12 +9,7 @@ export type Course = {
   level: CourseLevel
   credits: 0.5 | 1
   expectedGrade: Grade
-  prerequisites: Prerequisite[]
-}
-
-export type Prerequisite = {
-  description: string
-  courseId?: CourseID
+  prerequisites: Requirements
 }
 
 export default Course
