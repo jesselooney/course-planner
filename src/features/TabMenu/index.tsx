@@ -5,6 +5,7 @@ import AlertList from '../../components/AlertList'
 import { toggleIgnored } from '../../utils'
 import { DataContext } from '../App'
 import CourseSearch from '../CourseSearch'
+import { GraduationOptionsSelect } from '../GraduationOptionsSelect'
 
 import './style.css'
 
@@ -77,6 +78,7 @@ function TabMenu() {
           alerts={data.graduationRequirementErrors}
           toggleIgnored={toggleIgnoredGradReqs}
         />
+        <GraduationOptionsSelect />
       </TabPanel>
     </Tabs>
   )

@@ -1,7 +1,7 @@
 import objstr from 'obj-str'
 import Alert from '../../types/Alert'
 import './style.css'
-// not updating when state changes
+
 export function AlertList({
   alerts,
   toggleIgnored,
