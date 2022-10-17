@@ -15,6 +15,8 @@ const defaultContext: [GlobalData, (_: GlobalData) => void] = [initialData, (_: 
 export const DataContext = React.createContext(defaultContext)
 
 function App() {
+  // ensure data is initialized to a valid state
+  initialData.graduationOptionSelections = initialData.requiredGradOptions
   const [data, setData] = useState(initialData)
 
   return (
