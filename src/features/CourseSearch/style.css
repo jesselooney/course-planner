@@ -1,7 +1,6 @@
-.CourseSearch {
-    padding: 1rem;
+.CourseSearch--input {
+    padding: .5em .2em;
 
     border-radius: 10px;
-
-    background-color: var(--container-color);
+    box-shadow: none;
 }

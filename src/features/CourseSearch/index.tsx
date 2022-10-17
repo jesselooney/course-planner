@@ -42,7 +42,7 @@ function CourseSearch() {
 
   return (
     <div ref={drop} className="CourseSearch">
-      <input value={searchString} onChange={(e) => setSearchString(e.target.value)} type="text" />
+      <input className="CourseSearch--input" value={searchString} onChange={(e) => setSearchString(e.target.value)} type="text" />
       <ul>{courseItems}</ul>
     </div>
   )
