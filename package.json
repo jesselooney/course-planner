@@ -10,6 +10,7 @@
     "@types/node": "^16.11.54",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
+    "fuse.js": "^6.6.2",
     "obj-str": "^1.1.0",
     "react": "^18.2.0",
     "react-dnd": "^16.0.1",
