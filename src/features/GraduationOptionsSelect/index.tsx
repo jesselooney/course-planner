@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import Select, { ActionMeta, OnChangeValue, StylesConfig } from 'react-select'
 import GraduationOption from '../../types/GraduationOption'
 import { DataContext } from '../App'
@@ -23,6 +23,7 @@ export function GraduationOptionsSelect() {
       if (gradOption !== undefined) {
         return toSelectOption(gradOption)
       }
+      return undefined
     })
     .filter((o): o is SelectOption => o !== undefined)
 
@@ -30,7 +31,6 @@ export function GraduationOptionsSelect() {
     value: OnChangeValue<SelectOption, true>,
     actionMeta: ActionMeta<SelectOption>,
   ) {
-
     const newData = {
       ...data,
       graduationOptionSelections: [
