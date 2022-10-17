@@ -1,8 +1,7 @@
-import objstr from 'obj-str'
 import React, { useContext, useState } from 'react'
 import { useDrop } from 'react-dnd'
+import Fuse from 'fuse.js'
 
-import Grade from '../../types/Grade'
 import { hasOwnProperty, removeCourseSelection } from '../../utils'
 import { DataContext } from '../App'
 import CourseItem from '../CourseItem'
@@ -12,7 +11,7 @@ import './style.css'
 function CourseSearch() {
   const [data, setData] = useContext(DataContext)
 
-  const [{ canDrop, isOver }, drop] = useDrop(() => ({
+  const [, drop] = useDrop(() => ({
     accept: 'COURSE',
     collect: (monitor) => ({
       isOver: monitor.isOver(),
@@ -26,9 +25,20 @@ function CourseSearch() {
 
   const [searchString, setSearchString] = useState('')
 
-  const courseItems = data.courses
-    .filter((c) => c.name.toLowerCase().includes(searchString.toLowerCase()))
-    .map((course, index) => <CourseItem course={course} />)
+  const fuse = new Fuse(data.courses, { keys: ['name'] })
+
+  let searchResults = fuse.search(searchString)
+
+  if (searchResults.length === 0) {
+    searchResults = data.courses.map((v) => {
+      return {
+        item: v,
+        refIndex: 0,
+      }
+    })
+  }
+
+  const courseItems = searchResults.map((result, index) => <CourseItem course={result.item} />)
 
   return (
     <div ref={drop} className="CourseSearch">
