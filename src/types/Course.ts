@@ -1,7 +1,7 @@
 import Grade from './Grade'
 import CourseID from './CourseID'
 import CourseLevel from './CourseLevel'
-import Requirements from './Requirements'
+import BooleanStatement from './BooleanStatement'
 
 export type Course = {
   id: CourseID
@@ -9,7 +9,8 @@ export type Course = {
   level: CourseLevel
   credits: 0.5 | 1
   expectedGrade: Grade
-  prerequisites: Requirements
+  // pre- and corequisites
+  courseRequirements: BooleanStatement<CourseID>
 }
 
 export default Course
