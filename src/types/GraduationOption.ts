@@ -6,6 +6,7 @@ export type GraduationOption = {
   id: number
   name: string
   courseRequirements: BooleanStatement<CourseID>
+  // TODO: use course tags instead of just course area
   creditRequirements: BooleanStatement<{ credits: number; area: CourseArea }>
 }
 
