@@ -1,3 +1,3 @@
-export type CourseLevel = "College Preparation" | "Honors" | "Advanced Placement" | "Early College"
+export type CourseLevel = "College Preparatory" | "Honors" | "Advanced Placement" | "Early College"
 
 export default CourseLevel
