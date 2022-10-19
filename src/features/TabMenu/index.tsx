@@ -41,7 +41,7 @@ function TabMenu() {
       <TabList className="TabMenu__Tabs">
         <Tab className="TabMenu__Tabs__Tab">Courses</Tab>
         <Tab className="TabMenu__Tabs__Tab">
-          Course Requirements
+          Course Prerequisites
           <span
             className={objstr({
               TabMenu__Tabs__Tab__Badge: true,
