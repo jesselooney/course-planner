@@ -2,7 +2,7 @@ import objstr from 'obj-str'
 import { useContext } from 'react'
 import { Tabs, TabList, Tab, TabPanel } from 'react-tabs'
 import AlertList from '../../components/AlertList'
-import { toggleIgnored } from '../../utils'
+import { toggleIgnored } from '../../utils/toggleIgnored'
 import { DataContext } from '../App'
 import CourseSearch from '../CourseSearch'
 import { GraduationOptionsSelect } from '../GraduationOptionsSelect'
@@ -32,9 +32,7 @@ function TabMenu() {
     (e) => e.ignored === false,
   ).length
 
-  const courseReqErrorCount = data.courseRequirementErrors.filter(
-    (e) => e.ignored === false,
-  ).length
+  const courseReqErrorCount = data.courseRequirementErrors.filter((e) => e.ignored === false).length
 
   return (
     <Tabs className="TabMenu">
@@ -68,10 +66,7 @@ function TabMenu() {
         <CourseSearch />
       </TabPanel>
       <TabPanel>
-        <AlertList
-          alerts={data.courseRequirementErrors}
-          toggleIgnored={toggleIgnoredCourseReqs}
-        />
+        <AlertList alerts={data.courseRequirementErrors} toggleIgnored={toggleIgnoredCourseReqs} />
       </TabPanel>
       <TabPanel>
         <AlertList

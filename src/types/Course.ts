@@ -10,8 +10,9 @@ export type Course = {
   level: CourseLevel
   credits: 0.5 | 1
   expectedGrade: Grade
-  // pre- and corequisites
-  courseRequirements: BooleanStatement<CourseID>
+  tags: string[]
+  prerequisites?: BooleanStatement<CourseID>
+  prerequisitesText?: string
 }
 
 export default Course

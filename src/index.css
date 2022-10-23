@@ -4,6 +4,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
+    scrollbar-width: thin;
+    scrollbar-color: var(--container-color);
 }
 
 *:focus {
@@ -11,9 +14,16 @@
 }
 
 :root {
-    --background-color: #7778A6;
-    --container-color: #FFFFFF;
-    --action-color: #E43A48;
+    --background-color: #2b2d42;
+    --container-color: #8d99ae;
+    --action-color: #edf2f4;
+
+    --red: #ff006e;
+    --orange: #fb5607;
+    --green: #86A397; 
+    /* 16F4D0 */
+    --blue: #3a86ff;
+    --purple: #8338ec;
 
     --CourseItem-min-inner-width: 10ch;
     --CourseItem-horizontal-margin: .2em;

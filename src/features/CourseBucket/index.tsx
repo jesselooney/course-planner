@@ -4,7 +4,8 @@ import { useDrop } from 'react-dnd'
 import Course from '../../types/Course'
 
 import Grade from '../../types/Grade'
-import { hasOwnProperty, createCourseSelection, updateCourseSelection } from '../../utils'
+import { hasOwnProperty } from '../../utils/hasOwnProperty'
+import { createCourseSelection, updateCourseSelection } from '../../utils/courseSelections'
 import { DataContext } from '../App'
 import CourseItem from '../CourseItem'
 

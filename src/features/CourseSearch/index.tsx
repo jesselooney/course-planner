@@ -2,7 +2,8 @@ import React, { useContext, useState } from 'react'
 import { useDrop } from 'react-dnd'
 import Fuse from 'fuse.js'
 
-import { hasOwnProperty, removeCourseSelection } from '../../utils'
+import { hasOwnProperty } from '../../utils/hasOwnProperty'
+import { removeCourseSelection } from '../../utils/courseSelections'
 import { DataContext } from '../App'
 import CourseItem from '../CourseItem'
 
@@ -42,7 +43,12 @@ function CourseSearch() {
 
   return (
     <div ref={drop} className="CourseSearch">
-      <input className="CourseSearch--input" value={searchString} onChange={(e) => setSearchString(e.target.value)} type="text" />
+      <input
+        className="CourseSearch--input"
+        value={searchString}
+        onChange={(e) => setSearchString(e.target.value)}
+        type="text"
+      />
       <ul>{courseItems}</ul>
     </div>
   )

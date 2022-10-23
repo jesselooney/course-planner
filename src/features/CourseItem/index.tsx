@@ -1,13 +1,13 @@
 import objstr from 'obj-str'
-import React from 'react'
-import { useDrag, XYCoord } from 'react-dnd'
+import { useDrag } from 'react-dnd'
 
 import Course from '../../types/Course'
+import { toKebabCase } from '../../utils/toKebabCase'
 
 import './style.css'
 
 function CourseItem({ id, course }: { id?: number; course: Course }) {
-  const [{ isDragging }, drag, dragPreview] = useDrag(() => ({
+  const [{ isDragging }, drag] = useDrag(() => ({
     type: 'COURSE',
     item: { id, courseId: course.id },
     collect: (monitor) => ({
@@ -24,7 +24,9 @@ function CourseItem({ id, course }: { id?: number; course: Course }) {
         'CourseItem--isDragging': isDragging,
       })}
     >
-      <span className='CourseItem__inner'>{course.name}</span>
+      <span className="CourseItem__inner" data-level={toKebabCase(course.level)}>
+        {course.name}
+      </span>
     </div>
   )
 }

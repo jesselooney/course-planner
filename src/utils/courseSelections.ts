@@ -1,17 +1,7 @@
-import Alert from './types/Alert'
-import CourseSelection from './types/CourseSelection'
-import GlobalData from './types/GlobalData'
-import StateTuple from './types/StateTuple'
-
-interface HasNumericId {
-  id: number
-}
-
-function nextId(objects: HasNumericId[]): number {
-  const ids = objects.map((o) => o.id)
-  if (ids.length === 0) return 0
-  return Math.max(...ids) + 1
-}
+import CourseSelection from '../types/CourseSelection'
+import GlobalData from '../types/GlobalData'
+import StateTuple from '../types/StateTuple'
+import { nextId } from './nextId'
 
 export function createCourseSelection(
   [data, setData]: StateTuple<GlobalData>,
@@ -43,23 +33,4 @@ export function removeCourseSelection(
     data.courseSelections.splice(index, 1)
     setData(data)
   }
-}
-
-export function toggleIgnored(alerts: Alert[], id: number): Alert[] {
-  const index = alerts.findIndex((a) => a.id === id)
-  if (index >= 0) {
-    const alert = alerts[index]
-    const newAlert = { ...alert, ignored: !alert.ignored }
-    alerts[index] = newAlert
-  }
-
-  return alerts
-}
-
-// https://fettblog.eu/typescript-hasownproperty/
-export function hasOwnProperty<X extends {}, Y extends PropertyKey>(
-  obj: X,
-  prop: Y,
-): obj is X & Record<Y, unknown> {
-  return obj.hasOwnProperty(prop)
 }

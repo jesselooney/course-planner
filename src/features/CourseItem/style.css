@@ -32,3 +32,20 @@
 .CourseItem--isDragging {
     opacity: .5;
 }
+
+.CourseItem__inner[data-level="advanced-placement"]::after {
+    content: 'AP';
+    color: var(--blue);
+}
+.CourseItem__inner[data-level="early-college"]::after {
+    content: 'EC';
+    color: var(--green);
+}
+.CourseItem__inner[data-level="honors"]::after {
+    content: 'HR';
+    color: var(--purple);
+}
+.CourseItem__inner[data-level="college-preparatory"]::after {
+    content: 'CP';
+    color: var(--orange);
+}

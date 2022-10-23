@@ -8,6 +8,10 @@ import TabMenu from '../TabMenu'
 import initialData from '../../initialData'
 
 import './style.css'
+import {
+  computeCourseRequirementErrors,
+  computeGraduationRequirementErrors,
+} from '../../utils/requirements'
 
 const defaultContext: [GlobalData, (_: GlobalData) => void] = [initialData, (_: GlobalData) => {}]
 
@@ -17,6 +21,10 @@ function App() {
   // ensure data is initialized to a valid state
   initialData.graduationOptionSelections = initialData.requiredGradOptions
   const [data, setData] = useState(initialData)
+
+  // run only when data.courseSelections changes
+  computeCourseRequirementErrors([data, setData])
+  // computeGraduationRequirementErrors([data, setData])
 
   return (
     <div className="App">

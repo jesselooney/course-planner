@@ -8,9 +8,10 @@ export const initialData: GlobalData = {
       level: 'Advanced Placement',
       credits: 1,
       expectedGrade: 10, // 10-12?
-      courseRequirements: {
-        or: ['H1109', 'H1111'],
+      prerequisites: {
+        any: ['H1109', 'H1111'],
       },
+      tags: ['History'],
     },
     {
       id: 'H1109',
@@ -18,7 +19,7 @@ export const initialData: GlobalData = {
       level: 'Honors',
       credits: 1,
       expectedGrade: 9,
-      courseRequirements: {},
+      tags: ['History'],
     },
     {
       id: 'H1111',
@@ -26,7 +27,7 @@ export const initialData: GlobalData = {
       level: 'College Preparatory',
       credits: 1,
       expectedGrade: 9,
-      courseRequirements: {},
+      tags: ['History'],
     },
     {
       id: 'H1115',
@@ -34,9 +35,10 @@ export const initialData: GlobalData = {
       level: 'Advanced Placement',
       credits: 1,
       expectedGrade: 11,
-      courseRequirements: {
-        or: ['H1111', 'H1110'], // or World History AP ? (course not found)
+      prerequisites: {
+        any: ['H1111', 'H1110'], // or World History AP ? (course not found)
       },
+      tags: ['History'],
     },
     {
       id: 'H1130',
@@ -44,7 +46,7 @@ export const initialData: GlobalData = {
       level: 'Honors',
       credits: 0.5,
       expectedGrade: 11,
-      courseRequirements: {},
+      tags: ['History', 'Elective'],
     },
   ],
   courseSelections: [],
@@ -56,28 +58,22 @@ export const initialData: GlobalData = {
     {
       id: 0,
       name: 'Haverhill High',
-      courseRequirements: {},
       creditRequirements: {
-        and: [
-          { credits: 4, area: 'English' },
-          { credits: 3, area: 'History' },
-          { credits: 3, area: 'Mathematics' },
-          { credits: 3, area: 'Science and Engineering' },
-          { credits: 0.5, area: 'STEM Technology' },
-          { credits: 3, area: 'School to Career' },
-          {
-            or: [
-              { credits: 1, area: 'Fine Arts' },
-              { credits: 1, area: 'World Languages' },
-            ],
-          },
-          { credits: 2, area: 'Wellness' },
-          { credits: 0.5, area: 'Public Speaking' },
-          { credits: 2, area: 'Electives' },
+        all: [
+          { credits: 4, tagged: 'English' },
+          { credits: 3, tagged: 'History' },
+          { credits: 3, tagged: 'Mathematics' },
+          { credits: 3, tagged: 'Science and Engineering' },
+          { credits: 0.5, tagged: 'STEM Technology' },
+          { credits: 1, tagged: 'School-to-Career' },
+          { credits: 1, tagged: { any: ['Fine Arts', 'World Language'] } },
+          { credits: 2, tagged: 'Wellness' },
+          { credits: 0.5, tagged: 'Public Speaking' },
+          { credits: 2, tagged: 'Elective' },
         ],
       },
     },
-    { id: 1, name: 'Classical Academy', courseRequirements: {}, creditRequirements: {} },
+    { id: 1, name: 'Classical Academy' },
   ],
   requiredGradOptions: [0],
   graduationOptionSelections: [],
