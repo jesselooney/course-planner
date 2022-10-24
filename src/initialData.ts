@@ -50,10 +50,7 @@ export const initialData: GlobalData = {
     },
   ],
   courseSelections: [],
-  courseRequirementErrors: [
-    { id: 0, message: 'XYZ: three credits of astrophysics', ignored: false },
-    { id: 1, message: 'ABC: twenty credits of high-energy dentistry', ignored: false },
-  ],
+  courseRequirementErrors: [],
   graduationOptions: [
     {
       id: 0,

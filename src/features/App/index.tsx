@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 
@@ -22,9 +22,12 @@ function App() {
   initialData.graduationOptionSelections = initialData.requiredGradOptions
   const [data, setData] = useState(initialData)
 
-  // run only when data.courseSelections changes
-  computeCourseRequirementErrors([data, setData])
-  // computeGraduationRequirementErrors([data, setData])
+  // fix state updates in courseSelections.ts and elsewhere
+
+  useEffect(() => {
+    computeCourseRequirementErrors([data, setData])
+    // computeGraduationRequirementErrors([data, setData])
+  }, [data.courseSelections])
 
   return (
     <div className="App">

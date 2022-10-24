@@ -14,6 +14,8 @@ import './style.css'
 function CourseBucket({ title, grade }: { title: string; grade: Grade }) {
   const [data, setData] = useContext(DataContext)
 
+  // useDrop is called once, so the data in the callback is always out of date,
+  // how to pass new StateTuple to callback?
   const [{ canDrop, isOver }, drop] = useDrop(() => ({
     accept: 'COURSE',
     collect: (monitor) => ({
@@ -31,7 +33,7 @@ function CourseBucket({ title, grade }: { title: string; grade: Grade }) {
           createCourseSelection([data, setData], { courseId: item.courseId, grade })
       }
     },
-  }))
+  }), [data, setData])
 
   const courseItems = data.courseSelections
     // select courses from this grade

@@ -3,11 +3,14 @@ import GlobalData from '../types/GlobalData'
 import StateTuple from '../types/StateTuple'
 import { nextId } from './nextId'
 
+// TODO: fix these methods so they update data properly
+
 export function createCourseSelection(
   [data, setData]: StateTuple<GlobalData>,
   selection: Omit<CourseSelection, 'id'>,
 ): void {
-  data.courseSelections.push({ id: nextId(data.courseSelections), ...selection })
+  const newSelection = { id: nextId(data.courseSelections), ...selection }
+  setData({ ...data, courseSelections: [...data.courseSelections, newSelection] })
 }
 
 export function updateCourseSelection(
