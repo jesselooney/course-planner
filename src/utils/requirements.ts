@@ -1,11 +1,9 @@
 import Alert from '../types/Alert'
-import BooleanStatement from '../types/BooleanStatement'
 import Course from '../types/Course'
 import GlobalData from '../types/GlobalData'
 import Grade from '../types/Grade'
 import StateTuple from '../types/StateTuple'
 import { mapBooleanStatement, resolveBooleanStatement } from './booleanStatement'
-import { hasOwnProperty } from './hasOwnProperty'
 
 export function computeCourseRequirementErrors([data, setData]: StateTuple<GlobalData>): void {
   const prerequisiteErrors: Alert[] = []
@@ -26,6 +24,7 @@ export function computeCourseRequirementErrors([data, setData]: StateTuple<Globa
 
 // how to get specific errors ??
 export function computeGraduationRequirementErrors([data, setData]: StateTuple<GlobalData>): void {
+  // copied in from above
   const gradRequirementErrors: Alert[] = []
   for (const [index, selection] of data.courseSelections.entries()) {
     const course = getCourse(data, selection.courseId)
