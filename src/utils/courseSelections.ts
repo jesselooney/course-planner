@@ -22,8 +22,9 @@ export function updateCourseSelection(
   if (index >= 0) {
     const selection = data.courseSelections[index]
     const newSelection = { ...selection, ...update }
-    data.courseSelections[index] = newSelection
-    setData(data)
+    const courseSelections = [...data.courseSelections]
+    courseSelections[index] = newSelection
+    setData({ ...data, courseSelections: courseSelections })
   }
 }
 
@@ -33,7 +34,8 @@ export function removeCourseSelection(
 ): void {
   const index = data.courseSelections.findIndex((s) => s.id === selectionId)
   if (index >= 0) {
-    data.courseSelections.splice(index, 1)
-    setData(data)
+    const courseSelections = [...data.courseSelections]
+    courseSelections.splice(index, 1)
+    setData({ ...data, courseSelections: courseSelections })
   }
 }

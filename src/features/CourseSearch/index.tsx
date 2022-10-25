@@ -12,17 +12,20 @@ import './style.css'
 function CourseSearch() {
   const [data, setData] = useContext(DataContext)
 
-  const [, drop] = useDrop(() => ({
-    accept: 'COURSE',
-    collect: (monitor) => ({
-      isOver: monitor.isOver(),
-      canDrop: monitor.canDrop(),
+  const [, drop] = useDrop(
+    () => ({
+      accept: 'COURSE',
+      collect: (monitor) => ({
+        isOver: monitor.isOver(),
+        canDrop: monitor.canDrop(),
+      }),
+      drop(item, _) {
+        if (item instanceof Object && hasOwnProperty(item, 'id') && typeof item.id === 'number')
+          removeCourseSelection([data, setData], item.id)
+      },
     }),
-    drop(item, _) {
-      if (item instanceof Object && hasOwnProperty(item, 'id') && typeof item.id === 'number')
-        removeCourseSelection([data, setData], item.id)
-    },
-  }))
+    [data, setData],
+  )
 
   const [searchString, setSearchString] = useState('')
 

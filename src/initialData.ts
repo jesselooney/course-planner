@@ -11,6 +11,8 @@ export const initialData: GlobalData = {
       prerequisites: {
         any: ['H1109', 'H1111'],
       },
+      prerequisitesText:
+        'Grade of B- or better in World History II Honors or B+ in World History II and recommendation of teacher.',
       tags: ['History'],
     },
     {
@@ -38,6 +40,8 @@ export const initialData: GlobalData = {
       prerequisites: {
         any: ['H1111', 'H1110'], // or World History AP ? (course not found)
       },
+      prerequisitesText:
+        'Grade of B- or better in World History II or a passing grade in AP European History or AP World History, and recommendation of teacher.',
       tags: ['History'],
     },
     {

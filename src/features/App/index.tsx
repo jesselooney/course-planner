@@ -22,11 +22,16 @@ function App() {
   initialData.graduationOptionSelections = initialData.requiredGradOptions
   const [data, setData] = useState(initialData)
 
-  // fix state updates in courseSelections.ts and elsewhere
+  // WARN: it is assumed that every course with prerequisites also has a text,
+  // but this cannot be typechecked, so validate data somehow!
+
+  // TODO: visually show ignored errors, maybe in a gray circle,
+  // so people can still see they have chosen to ignore things
 
   useEffect(() => {
     computeCourseRequirementErrors([data, setData])
     // computeGraduationRequirementErrors([data, setData])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data.courseSelections])
 
   return (

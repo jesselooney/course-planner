@@ -10,7 +10,11 @@ export function computeCourseRequirementErrors([data, setData]: StateTuple<Globa
   for (const [index, selection] of data.courseSelections.entries()) {
     const course = getCourse(data, selection.courseId)
     if (!arePrerequisitesMet(data, course, selection.grade))
-      prerequisiteErrors.push({ id: index, message: course.prerequisitesText ?? '', ignored: false })
+      prerequisiteErrors.push({
+        id: index,
+        message: `${course.name}: ${course.prerequisitesText}`,
+        ignored: false,
+      })
     // deal with corequisites
   }
 
@@ -21,6 +25,8 @@ export function computeCourseRequirementErrors([data, setData]: StateTuple<Globa
 export function computeGraduationRequirementErrors([data, setData]: StateTuple<GlobalData>): void {}
 
 function arePrerequisitesMet(data: GlobalData, course: Course, grade: Grade): boolean {
+  if (course.prerequisites === undefined) return true
+
   return resolveBooleanStatement(
     mapBooleanStatement(course.prerequisites, (courseId) => {
       // Among course selections in grades before this course is being taken,
