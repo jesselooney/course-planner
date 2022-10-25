@@ -47,3 +47,23 @@ export function all(array: boolean[]): boolean {
 export function none(array: boolean[]): boolean {
   return !any(array)
 }
+
+function booleanStatementToString(bs: BooleanStatement<string>): string {
+  if (typeof bs === 'string') {
+    return bs
+  }
+
+  if (hasOwnProperty(bs, 'any')) {
+    return (bs.any as BooleanStatement<string>[]).map(b => booleanStatementToString(b)).join(' or ')
+  }
+  if (hasOwnProperty(bs, 'all')) {
+    return (bs.all as BooleanStatement<string>[]).map(b => booleanStatementToString(b)).join(' and ')
+  }
+  if (hasOwnProperty(bs, 'none')) {
+    return 'neither ' + (bs.none as BooleanStatement<string>[]).map(b => booleanStatementToString(b)).join(' nor ')
+  }
+
+  // One of the above if statements must match
+  console.error('BooleanStatement pattern match unexpectedly failed.')
+  return null as unknown as string
+}
