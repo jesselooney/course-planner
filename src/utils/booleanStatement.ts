@@ -48,7 +48,7 @@ export function none(array: boolean[]): boolean {
   return !any(array)
 }
 
-function booleanStatementToString(bs: BooleanStatement<string>): string {
+export function booleanStatementToString(bs: BooleanStatement<string>): string {
   if (typeof bs === 'string') {
     return bs
   }
