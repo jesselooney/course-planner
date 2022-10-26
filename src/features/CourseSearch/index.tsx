@@ -52,7 +52,7 @@ function CourseSearch() {
         onChange={(e) => setSearchString(e.target.value)}
         type="text"
       />
-      <ul>{courseItems}</ul>
+      <ul className="CourseSearch__Courses">{courseItems}</ul>
     </div>
   )
 }

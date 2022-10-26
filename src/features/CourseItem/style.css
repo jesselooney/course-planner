@@ -33,6 +33,10 @@
     opacity: .5;
 }
 
+.CourseItem::after {
+    font-weight: 800;
+}
+
 .CourseItem__inner[data-level="advanced-placement"]::after {
     content: 'AP';
     color: var(--blue);

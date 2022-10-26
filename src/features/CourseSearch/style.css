@@ -1,6 +1,22 @@
-.CourseSearch--input {
-    padding: .5em .2em;
+.CourseSearch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-    border-radius: 10px;
-    box-shadow: none;
+.CourseSearch--input {
+  padding: 0.5em 0.2em;
+  width: 60ch;
+
+  border-radius: 10px;
+  box-shadow: none;
+}
+
+.CourseSearch__Courses {
+  display: flex;
+  flex-direction: row;
+  width: 80vw;
+  max-height: 30vh;
+  flex-wrap: wrap;
+  overflow-x: scroll;
 }
