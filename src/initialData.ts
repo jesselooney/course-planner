@@ -42,7 +42,7 @@ export const initialData: GlobalData = {
       },
       prerequisitesText:
         'Grade of B- or better in World History II or a passing grade in AP European History or AP World History, and recommendation of teacher.',
-      tags: ['History'],
+      tags: ['History', 'U.S. History'],
     },
     {
       id: 'H1130',
@@ -51,6 +51,32 @@ export const initialData: GlobalData = {
       credits: 0.5,
       expectedGrade: 11,
       tags: ['History', 'Elective'],
+    },
+    {
+      id: 'H1126',
+      name: 'U.S. History I',
+      level: 'Honors',
+      credits: 1,
+      expectedGrade: 10,
+      tags: ['History', 'U.S. History'],
+      prerequisites: {
+        any: ['H1111', 'H1109'],
+      },
+      prerequisitesText:
+        'Grade of B- or better in World History II or passing grade in World History II Honors and receive the recommendation of his/her teacher.',
+    },
+    {
+      id: 'H1117',
+      name: 'U.S. History II',
+      level: 'Honors',
+      credits: 1,
+      expectedGrade: 11,
+      tags: ['History', 'U.S. History'],
+      prerequisites: {
+        any: ['H1126', 'H1109'],
+      },
+      prerequisitesText:
+        'Grade of B- or better in U.S. History I or passing grade in World History II Honors and receive the recommendation of his/her teacher.',
     },
   ],
   courseSelections: [],
@@ -73,15 +99,15 @@ export const initialData: GlobalData = {
           { credits: 2, tagged: 'Elective' },
         ],
       },
+      courseRequirements: {
+        all: [{ any: ['H1109', 'H1111'] }, { any: [{ all: ['H1126', 'H1117'] }, 'H1115'] }],
+      },
     },
     { id: 1, name: 'Classical Academy' },
   ],
   requiredGradOptions: [0],
   graduationOptionSelections: [],
-  graduationRequirementErrors: [
-    { id: 0, message: 'XYZ: three credits of astrophysics', ignored: false },
-    { id: 1, message: 'ABC: twenty credits of high-energy dentistry', ignored: false },
-  ],
+  graduationRequirementErrors: [],
 }
 
 export default initialData

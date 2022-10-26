@@ -29,9 +29,8 @@ function App() {
   // so people can still see they have chosen to ignore things
 
   useEffect(() => {
-    computeCourseRequirementErrors([data, setData])
-    computeGraduationRequirementErrors([data, setData])
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    setData((data) => computeCourseRequirementErrors(data))
+    setData((data) => computeGraduationRequirementErrors(data))
   }, [data.courseSelections])
 
   return (
