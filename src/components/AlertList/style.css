@@ -1,11 +1,16 @@
 .AlertList {
     list-style: none;
+    background-color: var(--background-color);
+    margin: 1em;
+    padding: 1em;
+    border-radius: 10px;
+    width: 80ch;
 }
 
 .AlertList__AlertItem {
     padding: .2em;
     border-radius: 4px;
-    color: red;
+    color: var(--red);
     cursor: pointer;
     -webkit-touch-callout: none;
     -webkit-user-select: none;

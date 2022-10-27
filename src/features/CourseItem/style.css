@@ -1,55 +1,86 @@
 .CourseItem {
-    --min-inner-width: var(--CourseItem-min-inner-width);
-    --horizontal-margin: var(--CourseItem-horizontal-margin);
-    --horizontal-padding: var(--CourseItem-horizontal-padding);
+  --min-inner-width: var(--CourseItem-min-inner-width);
+  --horizontal-margin: var(--CourseItem-horizontal-margin);
+  --horizontal-padding: var(--CourseItem-horizontal-padding);
 
-    text-align: center;
+  text-align: left;
 
-    margin: .5em var(--horizontal-margin);
-    padding: .5em var(--horizontal-padding);
+  margin: 0.5em var(--horizontal-margin);
+  padding: 0.5em var(--horizontal-padding);
 
-    border-radius: 10px;
+  border-radius: 10px;
 
-    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
 
-    background-color: var(--action-color);
-    width: min-content;
+  background-color: var(--action-color);
+  width: min-content;
 
-    cursor: pointer;
+  cursor: pointer;
+
+  position: relative;
+}
+
+.CourseItem::before {
+  content: attr(data-name);
+  position: absolute;
+
+  /* vertically center */
+  top: 50%;
+  transform: translateY(-50%);
+
+  /* move to right */
+  left: 100%;
+  margin-left: 15px; /* and add a small left margin */
+
+  /* basic styles */
+  width: 200px;
+  padding: 10px;
+  border-radius: 10px;
+  background: #000;
+  color: #fff;
+  text-align: center;
+
+  display: none; /* hide by default */
+
+  z-index: 1;
+}
+.CourseItem:hover::before {
+  /* display: block; */
 }
 
 .CourseItem__inner {
-    display: inline-block;
-    width: calc(2 * (var(--min-inner-width) + var(--horizontal-margin) + var(--horizontal-padding)));
-    overflow: clip;
-    white-space: nowrap;
+  display: inline-block;
+  width: calc(2 * (var(--min-inner-width) + var(--horizontal-margin) + var(--horizontal-padding)));
+  overflow: clip;
+  white-space: nowrap;
 }
 
 .CourseItem--halfYear .CourseItem__inner {
-    width: var(--min-inner-width);
+  width: var(--min-inner-width);
 }
 
 .CourseItem--isDragging {
-    opacity: .5;
+  opacity: 0.5;
 }
 
-.CourseItem::after {
-    font-weight: 800;
+.CourseItem__inner::before {
+  font-weight: 700;
+  margin-right: 0.5ch;
 }
 
-.CourseItem__inner[data-level="advanced-placement"]::after {
-    content: 'AP';
-    color: var(--blue);
+.CourseItem__inner[data-level='advanced-placement']::before {
+  content: 'AP';
+  color: var(--blue);
 }
-.CourseItem__inner[data-level="early-college"]::after {
-    content: 'EC';
-    color: var(--green);
+.CourseItem__inner[data-level='early-college']::before {
+  content: 'EC';
+  color: var(--green);
 }
-.CourseItem__inner[data-level="honors"]::after {
-    content: 'HR';
-    color: var(--purple);
+.CourseItem__inner[data-level='honors']::before {
+  content: 'HR';
+  color: var(--purple);
 }
-.CourseItem__inner[data-level="college-preparatory"]::after {
-    content: 'CP';
-    color: var(--orange);
+.CourseItem__inner[data-level='college-preparatory']::before {
+  content: 'CP';
+  color: var(--orange);
 }

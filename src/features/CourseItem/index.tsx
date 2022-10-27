@@ -24,7 +24,11 @@ function CourseItem({ id, course }: { id?: number; course: Course }) {
         'CourseItem--isDragging': isDragging,
       })}
     >
-      <span className="CourseItem__inner" data-level={toKebabCase(course.level)}>
+      <span
+        className="CourseItem__inner"
+        data-level={toKebabCase(course.level)}
+        data-name={course.name}
+      >
         {course.name}
       </span>
     </div>
