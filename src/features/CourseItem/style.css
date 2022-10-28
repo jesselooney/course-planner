@@ -14,10 +14,15 @@
 
   background-color: var(--action-color);
   width: min-content;
+  height: min-content;
 
   cursor: pointer;
 
   position: relative;
+}
+
+.CourseItem__inner__description {
+  display: none;
 }
 
 .CourseItem::before {
@@ -46,6 +51,25 @@
 }
 .CourseItem:hover::before {
   /* display: block; */
+}
+
+.CourseItem:hover {
+  width: 30ch;
+  height: 30ch;
+}
+
+.CourseItem:hover .CourseItem__inner {
+  position: absolute;
+  z-index: 2;
+  overflow: visible;
+}
+
+.CourseItem:hover .CourseItem__inner__description {
+  display: block;
+  width: 90%;
+  height: 10em;
+  white-space: pre-wrap;
+  z-index: 2;
 }
 
 .CourseItem__inner {

@@ -8,6 +8,8 @@ export const initialData: GlobalData = {
       level: 'Advanced Placement',
       credits: 1,
       expectedGrade: 10, // 10-12?
+      description:
+        'An Advanced placement course detailing the history of the European continent. Starting in 1450 and continuing to present day, this course covers the major events and themes of European history as they relate to modern considerations.',
       prerequisites: {
         any: ['H1109', 'H1111'],
       },
@@ -21,6 +23,7 @@ export const initialData: GlobalData = {
       level: 'Honors',
       credits: 1,
       expectedGrade: 9,
+      description: '',
       tags: ['History'],
     },
     {
@@ -29,6 +32,7 @@ export const initialData: GlobalData = {
       level: 'College Preparatory',
       credits: 1,
       expectedGrade: 9,
+      description: '',
       tags: ['History'],
     },
     {
@@ -37,6 +41,7 @@ export const initialData: GlobalData = {
       level: 'Advanced Placement',
       credits: 1,
       expectedGrade: 11,
+      description: '',
       prerequisites: {
         any: ['H1111', 'H1110'], // or World History AP ? (course not found)
       },
@@ -50,6 +55,7 @@ export const initialData: GlobalData = {
       level: 'Honors',
       credits: 0.5,
       expectedGrade: 11,
+      description: '',
       tags: ['History', 'Elective'],
     },
     {
@@ -58,6 +64,7 @@ export const initialData: GlobalData = {
       level: 'Honors',
       credits: 1,
       expectedGrade: 10,
+      description: '',
       tags: ['History', 'U.S. History'],
       prerequisites: {
         any: ['H1111', 'H1109'],
@@ -71,6 +78,7 @@ export const initialData: GlobalData = {
       level: 'Honors',
       credits: 1,
       expectedGrade: 11,
+      description: '',
       tags: ['History', 'U.S. History'],
       prerequisites: {
         any: ['H1126', 'H1109'],

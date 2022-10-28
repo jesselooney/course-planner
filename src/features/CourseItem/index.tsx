@@ -27,9 +27,12 @@ function CourseItem({ id, course }: { id?: number; course: Course }) {
       <span
         className="CourseItem__inner"
         data-level={toKebabCase(course.level)}
-        data-name={course.name}
       >
         {course.name}
+        <p className='CourseItem__inner__description'>
+          <span className='CourseItem__inner_description_credits'>{course.credits} CR </span>
+          {course.description}
+        </p>
       </span>
     </div>
   )
