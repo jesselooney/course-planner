@@ -48,6 +48,7 @@
 
 .TabMenu__Tabs__Tab__Badge {
     font-size: .8em;
+    font-weight: 700;
     margin-left: .2em;
     text-align: center;
     line-height: 1.8em;
@@ -55,10 +56,13 @@
     width: 1.8em;
     height: 1.8em;
     border-radius: 50%;
-    background-color: var(--red);
+    background-color: var(--dark-red);
     color: white;
+    overflow: hidden;
+    transition: width, 1ms, linear, height, 1s, linear;
 }
 
 .TabMenu__Tabs__Tab__Badge--hidden {
-    display: none;
+    width: 0;
+    height: 0;
 }

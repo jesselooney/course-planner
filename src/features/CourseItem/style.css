@@ -3,7 +3,7 @@
   --horizontal-margin: var(--CourseItem-horizontal-margin);
   --horizontal-padding: var(--CourseItem-horizontal-padding);
 
-  text-align: left;
+  text-align: center;
 
   margin: 0.5em var(--horizontal-margin);
   padding: 0.5em var(--horizontal-padding);
@@ -25,53 +25,6 @@
   display: none;
 }
 
-.CourseItem::before {
-  content: attr(data-name);
-  position: absolute;
-
-  /* vertically center */
-  top: 50%;
-  transform: translateY(-50%);
-
-  /* move to right */
-  left: 100%;
-  margin-left: 15px; /* and add a small left margin */
-
-  /* basic styles */
-  width: 200px;
-  padding: 10px;
-  border-radius: 10px;
-  background: #000;
-  color: #fff;
-  text-align: center;
-
-  display: none; /* hide by default */
-
-  z-index: 1;
-}
-.CourseItem:hover::before {
-  /* display: block; */
-}
-
-.CourseItem:hover {
-  width: 30ch;
-  height: 30ch;
-}
-
-.CourseItem:hover .CourseItem__inner {
-  position: absolute;
-  z-index: 2;
-  overflow: visible;
-}
-
-.CourseItem:hover .CourseItem__inner__description {
-  display: block;
-  width: 90%;
-  height: 10em;
-  white-space: pre-wrap;
-  z-index: 2;
-}
-
 .CourseItem__inner {
   display: inline-block;
   width: calc(2 * (var(--min-inner-width) + var(--horizontal-margin) + var(--horizontal-padding)));
@@ -90,6 +43,7 @@
 .CourseItem__inner::before {
   font-weight: 700;
   margin-right: 0.5ch;
+  float: inline-start;
 }
 
 .CourseItem__inner[data-level='advanced-placement']::before {

@@ -18,14 +18,15 @@
     --container-color: #8d99ae;
     --action-color: #edf2f4;
 
-    --red: #cc0000;
+    --red: #ff6161;
+    --dark-red: #cc2222;
     --orange: #fb5607;
     --green: #86A397; 
     /* 16F4D0 */
     --blue: #3a86ff;
     --purple: #8338ec;
 
-    --CourseItem-min-inner-width: 10ch;
+    --CourseItem-min-inner-width: 12ch;
     --CourseItem-horizontal-margin: .2em;
     --CourseItem-horizontal-padding: .3em;
 

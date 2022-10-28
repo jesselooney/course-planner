@@ -24,15 +24,8 @@ function CourseItem({ id, course }: { id?: number; course: Course }) {
         'CourseItem--isDragging': isDragging,
       })}
     >
-      <span
-        className="CourseItem__inner"
-        data-level={toKebabCase(course.level)}
-      >
+      <span className="CourseItem__inner" data-level={toKebabCase(course.level)}>
         {course.name}
-        <p className='CourseItem__inner__description'>
-          <span className='CourseItem__inner_description_credits'>{course.credits} CR </span>
-          {course.description}
-        </p>
       </span>
     </div>
   )
