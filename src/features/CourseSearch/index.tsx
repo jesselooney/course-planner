@@ -42,7 +42,7 @@ function CourseSearch() {
     })
   }
 
-  const courseItems = searchResults.map((result, index) => <CourseItem course={result.item} />)
+  const courseItems = searchResults.map((result, index) => <CourseItem key={result.item.id} course={result.item} />)
 
   return (
     <div ref={drop} className="CourseSearch">

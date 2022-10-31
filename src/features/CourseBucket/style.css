@@ -3,6 +3,8 @@
     flex-direction: column;
     align-items: center;
 
+    min-height: 393.6px;
+
     background-color: var(--container-color);
 
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
@@ -26,5 +28,6 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+
     width: calc(2 * var(--CourseItem-min-inner-width) + 4 * (var(--CourseItem-horizontal-margin) + var(--CourseItem-horizontal-padding)));
 }
