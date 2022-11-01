@@ -13,7 +13,10 @@ import {
   computeGraduationRequirementErrors,
 } from '../../utils/requirements'
 
-const defaultContext: [GlobalData, (_: GlobalData) => void] = [initialData, (_: GlobalData) => {}]
+const defaultContext: [GlobalData, (value: React.SetStateAction<GlobalData>) => void] = [
+  initialData,
+  (_) => {},
+]
 
 export const DataContext = React.createContext(defaultContext)
 

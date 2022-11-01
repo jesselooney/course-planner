@@ -13,19 +13,20 @@ function TabMenu() {
   const [data, setData] = useContext(DataContext)
 
   function toggleIgnoredGradReqs(id: number) {
-    const newData = {
-      ...data,
-      graduationRequirementErrors: toggleIgnored(data.graduationRequirementErrors, id),
-    }
-    setData(newData)
+    console.warn(data.graduationRequirementErrors[0])
+    setData((data) => {
+      return {
+        ...data,
+        graduationRequirementErrors: toggleIgnored(data.graduationRequirementErrors, id),
+      }
+    })
   }
 
   function toggleIgnoredCourseReqs(id: number) {
-    const newData = {
+    setData((data) => ({
       ...data,
       courseRequirementErrors: toggleIgnored(data.courseRequirementErrors, id),
-    }
-    setData(newData)
+    }))
   }
 
   const gradReqErrorCount = data.graduationRequirementErrors.filter(

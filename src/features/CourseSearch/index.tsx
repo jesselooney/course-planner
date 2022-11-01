@@ -21,7 +21,7 @@ function CourseSearch() {
       }),
       drop(item, _) {
         if (item instanceof Object && hasOwnProperty(item, 'id') && typeof item.id === 'number')
-          removeCourseSelection([data, setData], item.id)
+          setData((data) => removeCourseSelection(data, item.id as number))
       },
     }),
     [data, setData],
@@ -42,7 +42,9 @@ function CourseSearch() {
     })
   }
 
-  const courseItems = searchResults.map((result, index) => <CourseItem key={result.item.id} course={result.item} />)
+  const courseItems = searchResults.map((result, index) => (
+    <CourseItem key={result.item.id} course={result.item} />
+  ))
 
   return (
     <div ref={drop} className="CourseSearch">

@@ -17,7 +17,10 @@ export function AlertItem({ id, message, ignored }: Alert, toggleIgnored: (id: n
     <li
       className={objstr({ AlertList__AlertItem: true, 'AlertList__AlertItem--ignored': ignored })}
       key={id}
-      onClick={(_) => toggleIgnored(id)}
+      onClick={(e) => {
+        console.warn(e)
+        toggleIgnored(id)
+      }}
     >
       {message}
     </li>

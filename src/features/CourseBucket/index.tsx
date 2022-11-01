@@ -16,24 +16,30 @@ function CourseBucket({ title, grade }: { title: string; grade: Grade }) {
 
   // useDrop is called once, so the data in the callback is always out of date,
   // how to pass new StateTuple to callback?
-  const [{ canDrop, isOver }, drop] = useDrop(() => ({
-    accept: 'COURSE',
-    collect: (monitor) => ({
-      isOver: monitor.isOver(),
-      canDrop: monitor.canDrop(),
+  const [{ canDrop, isOver }, drop] = useDrop(
+    () => ({
+      accept: 'COURSE',
+      collect: (monitor) => ({
+        isOver: monitor.isOver(),
+        canDrop: monitor.canDrop(),
+      }),
+      drop(item, _) {
+        if (
+          item instanceof Object &&
+          hasOwnProperty(item, 'id') &&
+          hasOwnProperty(item, 'courseId')
+        ) {
+          if (typeof item.id === 'number')
+            setData((data) => updateCourseSelection(data, item.id as number, { grade }))
+          if (typeof item.id === 'undefined' && typeof item.courseId === 'string')
+            setData((data) =>
+              createCourseSelection(data, { courseId: item.courseId as string, grade }),
+            )
+        }
+      },
     }),
-    drop(item, _) {
-      if (
-        item instanceof Object &&
-        hasOwnProperty(item, 'id') &&
-        hasOwnProperty(item, 'courseId')
-      ) {
-        if (typeof item.id === 'number') updateCourseSelection([data, setData], item.id, { grade })
-        if (typeof item.id === 'undefined' && typeof item.courseId === 'string')
-          createCourseSelection([data, setData], { courseId: item.courseId, grade })
-      }
-    },
-  }), [data, setData])
+    [data, setData],
+  )
 
   const courseItems = data.courseSelections
     // select courses from this grade

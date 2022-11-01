@@ -32,9 +32,9 @@ export function computeGraduationRequirementErrors(data: GlobalData): GlobalData
   const gradRequirementErrors: Omit<Alert, 'id'>[] = []
   for (const optionId of data.graduationOptionSelections) {
     const gradOption = getGradOption(data, optionId)
-    // const graduationCreditErrors = getGraduationCreditErrors(data, gradOption)
+    const graduationCreditErrors = getGraduationCreditErrors(data, gradOption)
     const graduationCourseErrors = getGraduationCourseErrors(data, gradOption)
-    gradRequirementErrors.push(...graduationCourseErrors)
+    gradRequirementErrors.push(...graduationCourseErrors, ...graduationCreditErrors)
   }
 
   // assign IDs to these errors
@@ -69,13 +69,8 @@ function getGraduationCourseErrors(
   const courseReqs = gradOption.courseRequirements
   if (courseReqs === undefined) return []
 
-  let independentRequirements: BooleanStatement<CourseID>[]
-  if (hasOwnProperty(courseReqs, 'all')) {
-    // Split up top-level 'all' because each statement can be rendered as a separate Alert
-    independentRequirements = courseReqs.all as BooleanStatement<CourseID>[]
-  } else {
-    independentRequirements = [courseReqs]
-  }
+  // Split up top-level 'all' because each statement can be rendered as a separate Alert
+  const independentRequirements = splitTopLevelAll(courseReqs)
 
   const graduationCourseErrors: Omit<Alert, 'id'>[] = []
   for (const requirement of independentRequirements) {
@@ -101,6 +96,65 @@ function getGraduationCourseErrors(
   }
 
   return graduationCourseErrors
+}
+
+function getGraduationCreditErrors(
+  data: GlobalData,
+  gradOption: GraduationOption,
+): Omit<Alert, 'id'>[] {
+  const creditReqs = gradOption.creditRequirements
+  if (creditReqs === undefined) return []
+
+  // Split up top-level 'all' because each statement can be rendered as a separate Alert
+  const independentRequirements = splitTopLevelAll(creditReqs)
+
+  const coursesByTags = data.courseSelections.map((s) => getCourse(data, s.courseId).tags)
+
+  const graduationCourseErrors: Omit<Alert, 'id'>[] = []
+  for (const requirement of independentRequirements) {
+    const isRequirementSatisfied = resolveBooleanStatement(
+      mapBooleanStatement(requirement, ({ credits, tagged }) => {
+        // count credits
+        // maybe dont double count taking the same course twice?
+        let count = 0
+        for (const courseTagList of coursesByTags) {
+          if (
+            resolveBooleanStatement(
+              mapBooleanStatement(tagged, (requiredTag) => courseTagList.includes(requiredTag)),
+            )
+          ) {
+            count++
+          }
+        }
+        return count >= credits
+      }),
+    )
+
+    const requirementText = booleanStatementToString(
+      mapBooleanStatement(
+        requirement,
+        ({ credits, tagged }) =>
+          `${credits} credit${credits === 1 ? '' : 's'} of ${booleanStatementToString(tagged)}`,
+      ),
+    )
+
+    if (!isRequirementSatisfied) {
+      graduationCourseErrors.push({
+        message: `${gradOption.name}: requires ${requirementText}`,
+        ignored: false,
+      })
+    }
+  }
+
+  return graduationCourseErrors
+}
+
+function splitTopLevelAll<T>(bs: BooleanStatement<T>): BooleanStatement<T>[] {
+  if (bs instanceof Object && hasOwnProperty(bs, 'all')) {
+    return bs.all as BooleanStatement<T>[]
+  } else {
+    return [bs]
+  }
 }
 
 function getGradOption(data: GlobalData, id: number): GraduationOption {
